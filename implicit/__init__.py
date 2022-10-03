@@ -9,10 +9,6 @@ T = TypeVar("T")
 
 def cast(type_: Type[T], value: object) -> T:
     try:
-        signature = inspect.signature(type_)
-        params = signature.parameters
-        print(params)
-
         return type_(value)  # type: ignore[call-arg]
     except Exception as error:
         raise ImplicitCastError(error)
